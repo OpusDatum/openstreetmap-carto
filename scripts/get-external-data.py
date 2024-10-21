@@ -246,7 +246,7 @@ def main():
 
                     logging.info("  Download complete ({} bytes)".format(len(content)))
 
-                    new_last_modified = str(os.fstat(fp.fileno()).st_mtime
+                    new_last_modified = str(os.fstat(fp.fileno()).st_mtime)
                     logging.info("  new_last_modified: {}".format(new_last_modified))                    
                     
                     if "archive" in source and source["archive"]["format"] == "zip":
