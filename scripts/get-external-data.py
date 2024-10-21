@@ -234,6 +234,7 @@ def main():
                 # In gravitystorm/openstreetmap-carto v5.6.0 there is an option to read from a file path. This code attempts to recreate that functionality in the opusdatum/openstreetmap-carto based on v5.4.0. Added the if statement to identify file://
                 if source["url"].startswith('file://'):
                     logging.info("  Using fttp://")
+                    logging.info("  Reading file: ()".format(url))
 
                     url = source["url"]
                     filename = url[7:]
@@ -245,7 +246,7 @@ def main():
 
                     if "archive" in source and source["archive"]["format"] == "zip":
                         logging.info("  Decompressing file")
-                        zip = zipfile.ZipFile(io.BytesIO(download.content))
+                        zip = zipfile.ZipFile(io.BytesIO(content))
                         for member in source["archive"]["files"]:
                             zip.extract(member, workingdir)
 
