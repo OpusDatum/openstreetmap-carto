@@ -235,10 +235,6 @@ def main():
                 if source["url"].startswith('file://'):
                     
                     url = source["url"]                   
-
-                    response = s.get(url, headers=headers)
-                    new_last_modified = response.headers.get('Last-Modified', None)
-                    logging.info("  new_last_modified: {}".format(new_last_modified))
                                                 
                     logging.info("  Using file://")
 
@@ -250,6 +246,9 @@ def main():
 
                     logging.info("  Download complete ({} bytes)".format(len(content)))
 
+                    new_last_modified = str(os.fstat(fp.fileno()).st_mtime
+                    logging.info("  new_last_modified: {}".format(new_last_modified))                    
+                    
                     if "archive" in source and source["archive"]["format"] == "zip":
                         logging.info("  Decompressing file")
                         zip = zipfile.ZipFile(io.BytesIO(content))
