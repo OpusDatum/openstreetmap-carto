@@ -297,7 +297,7 @@ def main():
                     this_table.index()
                     if renderuser is not None:
                         this_table.grant_access(renderuser)
-                    this_table.replace(new_last_modified)
+                    #this_table.replace(new_last_modified) //Removed as not set. Let's see if it loads...
                 
                 else:
                     logging.info("  Using http://")
