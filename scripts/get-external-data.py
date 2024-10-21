@@ -299,7 +299,7 @@ def main():
                     download = s.get(source["url"], headers=headers)
                     download.raise_for_status()
                 
-                else
+                else:
                     logging.info("  Using http://")
   
                     if download.status_code == requests.codes.ok:
