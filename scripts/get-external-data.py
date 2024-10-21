@@ -233,14 +233,15 @@ def main():
 
                 # In gravitystorm/openstreetmap-carto v5.6.0 there is an option to read from a file path. This code attempts to recreate that functionality in the opusdatum/openstreetmap-carto based on v5.4.0. Added the if statement to identify file://
                 if source["url"].startswith('file://'):
+                    
+                    url = source["url"]                   
+
                     response = s.get(url, headers=headers)
                     new_last_modified = response.headers.get('Last-Modified', None)
                     logging.info("  new_last_modified: {}".format(new_last_modified))
-                    
-                            
-                    logging.info("  Using fttp://")
+                                                
+                    logging.info("  Using file://")
 
-                    url = source["url"]                   
                     logging.info("  Reading file: {}".format(url))
                     filename = url[7:]
                     
